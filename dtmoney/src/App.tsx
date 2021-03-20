@@ -4,6 +4,7 @@ import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header"
 import { NewTransactionModal } from "./components/NewTransactionModal/Index";
 import { GlobalStyle } from "./styles/global";
+import { TransactionsProvider } from './hooks/useTransactions';
 
 //Acessibilidade
 Modal.setAppElement('#root')
@@ -21,12 +22,12 @@ export function App() {
 
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenNewTransactioModal={handleOpenNewTransactionModal}/>
       <Dashboard />
       <NewTransactionModal isOpen={isNewTransactionModalOpen} onRequestClose={handleCloseNewTransactionModal}/>
       <GlobalStyle/>
-    </>
+    </TransactionsProvider>
   );
 }
 
